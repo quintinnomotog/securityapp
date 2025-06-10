@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+
+  <img src="assets/blur.png" />
+
+  <ion-header [translucent]="true" class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon name="arrow-back-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <section id="header">
+
+    <div class="box">
+      <ion-label>
+        <h1>Register</h1>
+        <p>Create an account to continue!</p>
+      </ion-label>
+    </div>
+
+  </section>
+
+  <form class="ion-padding">
+
+    <div class="formulario-input">
+      <input type="text" placeholder="Name" />
+    </div>
+
+    <div class="formulario-input">
+      <input type="text" placeholder="Last Name" />
+    </div>
+
+    <div class="formulario-input">
+      <input type="text" placeholder="E-mail" />
+    </div>
+
+    <div class="formulario-input">
+      <input type="date" placeholder="" />
+    </div>
+
+    <div class="formulario-input">
+      <input type="text" placeholder="(+55) 61 9-9999-9999" />
+    </div>
+
+    <div class="formulario-input">
+      <input type="password" placeholder="* * * * * * * " />
+    </div>
+
+    <div class="formulario-input">
+      <ion-button expand="block" fill="solid">
+        Register
+      </ion-button>
+    </div>
+
+  </form>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-label>
+    Already have an account?
+    <a>Log In</a>
+  </ion-label>
+</ion-footer>
