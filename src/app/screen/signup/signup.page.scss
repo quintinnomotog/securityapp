@@ -55,12 +55,27 @@ ion-content {
         outline: none;
         padding-left: 1rem;
         font-weight: bold;
-        color: #46494c;
+        color: #5d5d5d;
+      }
+
+      ::placeholder {
+        color: #9aa1a4;
+      }
+
+      div {
+        input {}
+
+        ion-icon {
+          position: absolute;
+          margin-top: 0.9rem;
+          right: 1.8rem;
+          font-size: 1.4rem;
+          color: #7c8287;
+        }
       }
 
       ion-button {
         margin-top: 2rem;
-        // border: red solid 2px;
         height: 55px;
         --border-radius: 14px;
         font-weight: bold;

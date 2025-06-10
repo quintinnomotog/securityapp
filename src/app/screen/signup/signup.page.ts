@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { IonButton, IonButtons, IonContent, IonHeader, IonIcon, IonToolbar, IonLabel, IonTitle, IonFooter } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { arrowBackOutline } from 'ionicons/icons';
+import { arrowBackOutline, eyeOffOutline } from 'ionicons/icons';
 
 @Component({
   selector: 'app-signup',
@@ -15,9 +15,7 @@ import { arrowBackOutline } from 'ionicons/icons';
 export class SignupPage implements OnInit {
 
   constructor() {
-    addIcons({
-      arrowBackOutline
-    });
+    addIcons({arrowBackOutline,eyeOffOutline});
   }
 
   ngOnInit() {
