@@ -47,8 +47,8 @@
 
     <div class="formulario-input">
       <div>
-        <input type="password" placeholder="* * * * * * * " />
-        <ion-icon name="eye-off-outline"></ion-icon>
+        <input [type]="TYPE_INPUT" placeholder="* * * * * * * " />
+        <ion-icon [name]="ICONE" (click)="showPassword()"></ion-icon>
       </div>
     </div>
 
