@@ -52,4 +52,5 @@ export class SignupPage implements OnInit {
       this.ICONE = 'eye-off-outline';
     }
   }
+
 }
