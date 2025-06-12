@@ -23,42 +23,54 @@
 
   </section>
 
-  <form class="ion-padding">
+  <form [formGroup]="formGroup" (ngSubmit)="create()" class="ion-padding">
 
     <div class="formulario-input">
-      <input type="text" placeholder="Name" maxlength="50" />
+      <input type="text" placeholder="Name" formControlName="nome" maxlength="50" />
     </div>
 
     <div class="formulario-input">
-      <input type="text" placeholder="Last Name" maxlength="80" />
+      <input type="text" placeholder="Last Name" formControlName="sobrenome" maxlength="80" />
     </div>
 
     <div class="formulario-input">
-      <input type="text" placeholder="E-mail" maxlength="100" />
+      <input type="text" placeholder="E-mail" formControlName="email" maxlength="100" />
+    </div>
+
+    <div id="abrir-modal" class="formulario-input">
+      <input type="text" placeholder="DD/MM/AAAA" formControlName="data" readonly />
     </div>
 
     <div class="formulario-input">
-      <input type="date" placeholder="" />
-    </div>
-
-    <div class="formulario-input">
-      <input type="text" placeholder="(+55) 61 9-9999-9999" maxlength="20" />
+      <input type="text" placeholder="(+55) 61 9-9999-9999" formControlName="telefone" maxlength="20" />
     </div>
 
     <div class="formulario-input">
       <div>
-        <input [type]="TYPE_INPUT" placeholder="* * * * * * * " maxlength="90"/>
+        <input [type]="TYPE_INPUT" placeholder="* * * * * * * " formControlName="senha" maxlength="90"/>
         <ion-icon [name]="ICONE" (click)="showPassword()"></ion-icon>
       </div>
     </div>
 
     <div class="formulario-input">
-      <ion-button expand="block" fill="solid">
+      <ion-button type="submit" expand="block" fill="solid">
         Register
       </ion-button>
     </div>
 
   </form>
+
+  <ion-modal trigger="abrir-modal">
+    <ion-datetime
+      *ngIf="true"
+      doneText="Selecionar"
+      cancelText="Cancelar"
+      presentation="date"
+      size="cover"
+      [showDefaultButtons]="true"
+      (ionChange)="getData($event.detail.value!)"
+      ></ion-datetime>
+  </ion-modal>
 
 </ion-content>
 

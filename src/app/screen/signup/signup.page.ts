@@ -1,18 +1,21 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
   IonButton,
   IonButtons,
   IonContent,
+  IonDatetime,
   IonFooter,
   IonHeader,
   IonIcon,
   IonLabel,
-  IonToolbar,
+  IonModal,
+  IonToolbar
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowBackOutline, eyeOffOutline, eyeOutline } from 'ionicons/icons';
+import moment from "moment";
 
 @Component({
   selector: 'app-signup',
@@ -20,6 +23,8 @@ import { arrowBackOutline, eyeOffOutline, eyeOutline } from 'ionicons/icons';
   styleUrls: ['./signup.page.scss'],
   standalone: true,
   imports: [
+    IonDatetime,
+    IonModal,
     IonFooter,
     IonLabel,
     IonToolbar,
@@ -30,18 +35,26 @@ import { arrowBackOutline, eyeOffOutline, eyeOutline } from 'ionicons/icons';
     IonContent,
     CommonModule,
     FormsModule,
+    ReactiveFormsModule
   ],
 })
 export class SignupPage implements OnInit {
+
   public ICONE: string = 'eye-off-outline';
 
   public TYPE_INPUT: string = 'password';
 
-  constructor() {
+  public formGroup!: FormGroup;
+
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
     addIcons({ arrowBackOutline, eyeOffOutline, eyeOutline });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.configurarFormulario();
+  }
 
   public showPassword() {
     if (this.TYPE_INPUT === 'password') {
@@ -51,6 +64,32 @@ export class SignupPage implements OnInit {
       this.TYPE_INPUT = 'password';
       this.ICONE = 'eye-off-outline';
     }
+  }
+
+  public getData(data: any) {
+    this.formGroup.patchValue({
+      data: moment(data).format("DD/MM/YYYY")
+    });
+  }
+
+  private configurarFormulario() {
+    this.formGroup = this.formBuilder.group({
+      nome: ["", [Validators.required]],
+      sobrenome: ["", [Validators.required]],
+      email: ["", [Validators.required]],
+      data: ["", [Validators.required]],
+      telefone: ["", [Validators.required]],
+      senha: ["", [Validators.required]],
+    });
+  }
+
+  public create() {
+    console.log('Dados do formulário: ', this.formGroup.value);
+    this.resetFormulario();
+  }
+
+  public resetFormulario() {
+    this.formGroup.reset();
   }
 
 }
