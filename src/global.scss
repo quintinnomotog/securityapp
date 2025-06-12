@@ -20,3 +20,17 @@
 ion-button {
   text-transform: initial;
 }
+
+.modal-datapicker {
+  border: dashed red 2px;
+  --background: transparent;
+  padding-top: 20vh;
+  padding-left: 20px;
+  padding-right: 20px;
+  // &::part(content) {
+  //   backdrop-filter: blur(6px);
+  // }
+  ion-datetime {
+    border-radius: 14px;
+  }
+}
