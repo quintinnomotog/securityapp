@@ -132,7 +132,8 @@ export class SignupPage implements OnInit {
     const toastController = await this.toastController.create({
       message: "Erro ao tentar cadastrar os dados!",
       color: "danger",
-      position: "top"
+      position: "top",
+      duration: 3000
     });
     return toastController.present();
   }
