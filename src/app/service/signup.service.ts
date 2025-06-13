@@ -15,8 +15,8 @@ export class SignupService {
     private httpClient: HttpClient
   ) {}
 
-  public signup(nome:string, sobrenome:string, email:string, data:string, telefone:string, senha:string) {
-    return this.httpClient.post<SignupModel>(this.ENDPOINT, { nome, sobrenome, email, data, telefone, senha }).pipe(
+  public signup(nome:string, email:string, data:string, telefone:string, senha:string) {
+    return this.httpClient.post<SignupModel>(this.ENDPOINT, { nome, email, data, telefone, senha }).pipe(
       tap((response) => {
         sessionStorage.setItem("token", response.token)
       }));

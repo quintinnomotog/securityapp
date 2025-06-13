@@ -87,7 +87,6 @@ export class SignupPage implements OnInit {
   private configurarFormulario() {
     this.formGroup = this.formBuilder.group({
       nome: ["", [Validators.required]],
-      sobrenome: ["", [Validators.required]],
       email: ["", [Validators.required]],
       data: ["", [Validators.required]],
       telefone: ["", [Validators.required]],
@@ -99,7 +98,6 @@ export class SignupPage implements OnInit {
     console.log('Dados do formulário: ', this.formGroup.value);
     this.signupService.signup(
       this.formGroup.value.nome,
-      this.formGroup.value.sobrenome,
       this.formGroup.value.email,
       this.formGroup.value.data,
       this.formGroup.value.telefone,
