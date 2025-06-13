@@ -1,0 +1,7 @@
+#Fri Jun 13 17:36:49 BRT 2025
+base.0=/home/desenvolvimento/Projects/securityapp/android/app/build/intermediates/dex/release/mergeDexRelease/classes.dex
+base.1=/home/desenvolvimento/Projects/securityapp/android/app/build/intermediates/global_synthetics_dex/release/mergeReleaseGlobalSynthetics/classes.dex
+path.0=classes.dex
+path.1=classes.dex
+renamed.0=classes.dex
+renamed.1=classes2.dex
