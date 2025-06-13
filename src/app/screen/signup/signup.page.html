@@ -53,7 +53,7 @@
     </div>
 
     <div class="formulario-input">
-      <ion-button type="submit" expand="block" fill="solid">
+      <ion-button type="submit" expand="block" fill="solid" [disabled]="!this.formGroup.valid">
         Register
       </ion-button>
     </div>
