@@ -11,11 +11,12 @@ import {
   IonIcon,
   IonLabel,
   IonModal,
-  IonToolbar
+  IonToolbar,
 } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { arrowBackOutline, eyeOffOutline, eyeOutline } from 'ionicons/icons';
 import moment from "moment";
+import { NgxMaskDirective } from "ngx-mask";
 
 @Component({
   selector: 'app-signup',
@@ -23,6 +24,7 @@ import moment from "moment";
   styleUrls: ['./signup.page.scss'],
   standalone: true,
   imports: [
+    NgxMaskDirective,
     IonDatetime,
     IonModal,
     IonFooter,
@@ -35,7 +37,7 @@ import moment from "moment";
     IonContent,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
 })
 export class SignupPage implements OnInit {
