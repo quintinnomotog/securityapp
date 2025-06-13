@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
@@ -17,6 +18,8 @@ import { addIcons } from 'ionicons';
 import { arrowBackOutline, eyeOffOutline, eyeOutline } from 'ionicons/icons';
 import moment from "moment";
 import { NgxMaskDirective } from "ngx-mask";
+import { SignupService } from './../../service/signup.service';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -38,7 +41,11 @@ import { NgxMaskDirective } from "ngx-mask";
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule
   ],
+  providers: [
+    SignupService
+  ]
 })
 export class SignupPage implements OnInit {
 
@@ -49,7 +56,10 @@ export class SignupPage implements OnInit {
   public formGroup!: FormGroup;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private signupService: SignupService,
+    private loadingController: LoadingController,
+    private toastController: ToastController
   ) {
     addIcons({ arrowBackOutline, eyeOffOutline, eyeOutline });
   }
@@ -85,13 +95,46 @@ export class SignupPage implements OnInit {
     });
   }
 
-  public create() {
+  public signup() {
     console.log('Dados do formulário: ', this.formGroup.value);
-    this.resetFormulario();
+    this.signupService.signup(
+      this.formGroup.value.nome,
+      this.formGroup.value.sobrenome,
+      this.formGroup.value.email,
+      this.formGroup.value.data,
+      this.formGroup.value.telefone,
+      this.formGroup.value.senha).subscribe({
+        next: () => {
+          console.log("Sucesso!");
+          this.loading();
+          this.resetFormulario();
+      },
+        error: () => {
+          console.log("Erro!");
+          this.toastError();
+        }
+      });
   }
 
   public resetFormulario() {
     this.formGroup.reset();
+  }
+
+  public async loading() {
+    const loadingController = await this.loadingController.create({
+      message: "Salvando dados...",
+      spinner: "crescent",
+    });
+    return loadingController.present();
+  }
+
+  public async toastError() {
+    const toastController = await this.toastController.create({
+      message: "Erro ao tentar cadastrar os dados!",
+      color: "danger",
+      position: "top"
+    });
+    return toastController.present();
   }
 
 }
