@@ -147,6 +147,16 @@ export class SigninPage implements OnInit {
     return toastController.present();
   }
 
+  public async toastAlerta() {
+    const toastController = await this.toastController.create({
+      message: "Funcionalidade não Implementada!",
+      color: "danger",
+      position: "top",
+      duration: 1000
+    });
+    return toastController.present();
+  }
+
   public redirecionarTelaSigin() {
     return this.router.navigate(["/signin"]);
   }
@@ -155,8 +165,12 @@ export class SigninPage implements OnInit {
     return this.router.navigate(["/signup"]);
   }
 
-  public realizarSigninGoogle() { }
+  public realizarSigninGoogle() {
+    this.toastAlerta();
+  }
 
-  public realizarSigninFacebook() { }
+  public realizarSigninFacebook() {
+    this.toastAlerta();
+  }
 
 }

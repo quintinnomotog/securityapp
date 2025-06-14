@@ -57,11 +57,11 @@
   </form>
 
   <div class="login-alternativo">
-    <ion-button fill="outline" color="light" expand="block" class="google">
+    <ion-button (click)="realizarSigninGoogle()" fill="outline" color="light" expand="block" class="google">
       <ion-icon name="logo-google"></ion-icon>
       <ion-text>Continue with Google</ion-text>
     </ion-button>
-    <ion-button fill="outline" color="light" expand="block" class="facebook">
+    <ion-button (click)="realizarSigninFacebook()" fill="outline" color="light" expand="block" class="facebook">
       <ion-icon name="logo-facebook"></ion-icon>
       <ion-text>Continue with Google</ion-text>
     </ion-button>
