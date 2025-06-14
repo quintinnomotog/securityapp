@@ -9,14 +9,14 @@ import { tap } from 'rxjs';
 })
 export class SignupService {
 
-  private ENDPOINT = environment.URL.concat("/autorizador/signup");
+  private ENDPOINT = environment.URL.concat("/signup");
 
   constructor(
     private httpClient: HttpClient
   ) {}
 
-  public signup(nome:string, email:string, data:string, telefone:string, senha:string) {
-    return this.httpClient.post<SignupModel>(this.ENDPOINT, { nome, email, data, telefone, senha }).pipe(
+  public signup(nome:string, identificador:string, dataNascimento:string, telefone:string, senha:string) {
+    return this.httpClient.post<SignupModel>(this.ENDPOINT, { nome, identificador, dataNascimento, telefone, senha }).pipe(
       tap((response) => {
         sessionStorage.setItem("token", response.token)
       }));

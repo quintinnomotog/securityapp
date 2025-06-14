@@ -55,11 +55,13 @@ export class SignupPage implements OnInit {
 
   public formGroup!: FormGroup;
 
+  public dataNascimentoOriginal: any;
+
   constructor(
     private formBuilder: FormBuilder,
     private signupService: SignupService,
     private loadingController: LoadingController,
-    private toastController: ToastController
+    private toastController: ToastController,
   ) {
     addIcons({ arrowBackOutline, eyeOffOutline, eyeOutline });
   }
@@ -79,16 +81,17 @@ export class SignupPage implements OnInit {
   }
 
   public getData(data: any) {
+    this.dataNascimentoOriginal = data;
     this.formGroup.patchValue({
-      data: moment(data).format("DD/MM/YYYY")
+      dataNascimento: moment(data).format("DD/MM/YYYY")
     });
   }
 
   private configurarFormulario() {
     this.formGroup = this.formBuilder.group({
       nome: ["", [Validators.required]],
-      email: ["", [Validators.required]],
-      data: ["", [Validators.required]],
+      identificador: ["", [Validators.required]],
+      dataNascimento: ["", [Validators.required]],
       telefone: ["", [Validators.required]],
       senha: ["", [Validators.required]],
     });
@@ -98,8 +101,8 @@ export class SignupPage implements OnInit {
     console.log('Dados do formulário: ', this.formGroup.value);
     this.signupService.signup(
       this.formGroup.value.nome,
-      this.formGroup.value.email,
-      this.formGroup.value.data,
+      this.formGroup.value.identificador,
+      this.dataNascimentoOriginal,
       this.formGroup.value.telefone,
       this.formGroup.value.senha).subscribe({
         next: () => {
@@ -122,6 +125,7 @@ export class SignupPage implements OnInit {
     const loadingController = await this.loadingController.create({
       message: "Salvando dados...",
       spinner: "crescent",
+      duration: 3000
     });
     return loadingController.present();
   }
