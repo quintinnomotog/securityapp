@@ -1,13 +1,82 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>signin</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">signin</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <img src="assets/blur.png" />
+
+  <section id="header">
+
+    <div class="logo">
+      <img src="assets/logo.png" />
+    </div>
+
+    <div class="box">
+      <ion-label>
+        <h1>Sigin in to your Account </h1>
+        <p>Enter yout email and password to log in</p>
+      </ion-label>
+    </div>
+
+  </section>
+
+  <form [formGroup]="formGroup" (ngSubmit)="signin()" class="ion-padding">
+
+    <div class="formulario-input">
+      <input type="text" placeholder="E-mail" formControlName="identificador" maxlength="100" />
+    </div>
+
+    <div class="formulario-input">
+      <div>
+        <input [type]="TYPE_INPUT" placeholder="* * * * * * * " formControlName="senha" maxlength="90" />
+        <ion-icon [name]="ICONE" (click)="showPassword()"></ion-icon>
+      </div>
+    </div>
+
+    <div class="remember-forgot">
+      <div class="remember">
+        <ion-checkbox></ion-checkbox>
+        <ion-text>Remember me</ion-text>
+      </div>
+      <div class="forgot">
+        <ion-text>Forgot Password ?</ion-text>
+      </div>
+    </div>
+
+    <div class="formulario-input">
+      <ion-button type="submit" expand="block" fill="solid" [disabled]="this.formGroup.valid">
+        Log In
+      </ion-button>
+    </div>
+
+    <div class="or">
+      <div></div>
+      <ion-text>
+        Or
+      </ion-text>
+      <div></div>
+    </div>
+
+  </form>
+
+  <div class="login-alternativo">
+    <ion-button fill="outline" expand="block" class="google">
+      <ion-icon name="logo-google"></ion-icon>
+      <ion-text>Continue with Google</ion-text>
+    </ion-button>
+    <ion-button fill="outline" expand="block" class="facebook">
+      <ion-icon name="logo-facebook"></ion-icon>
+      <ion-text>Continue with Google</ion-text>
+    </ion-button>
+  </div>
+
+  <ion-modal trigger="abrir-modal" class="modal-datapicker">
+    <ion-datetime *ngIf="true" doneText="Selecionar" cancelText="Cancelar" presentation="date" size="cover"
+      [showDefaultButtons]="true" (ionChange)="getData($event.detail.value!)"></ion-datetime>
+  </ion-modal>
+
 </ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-label>
+    Don't have an account?
+    <a (click)="redirecionarTelaSignup()">Sign Up</a>
+  </ion-label>
+</ion-footer>
