@@ -20,6 +20,7 @@ import moment from "moment";
 import { NgxMaskDirective } from "ngx-mask";
 import { SignupService } from './../../service/signup.service';
 import { LoadingController, ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -62,6 +63,7 @@ export class SignupPage implements OnInit {
     private signupService: SignupService,
     private loadingController: LoadingController,
     private toastController: ToastController,
+    private router: Router
   ) {
     addIcons({ arrowBackOutline, eyeOffOutline, eyeOutline });
   }
@@ -109,6 +111,7 @@ export class SignupPage implements OnInit {
           console.log("Sucesso!");
           this.loading();
           this.resetFormulario();
+          this.redirecionarTelaSigin();
       },
         error: () => {
           console.log("Erro!");
@@ -125,7 +128,7 @@ export class SignupPage implements OnInit {
     const loadingController = await this.loadingController.create({
       message: "Salvando dados...",
       spinner: "crescent",
-      duration: 3000
+      duration: 2000
     });
     return loadingController.present();
   }
@@ -138,6 +141,10 @@ export class SignupPage implements OnInit {
       duration: 3000
     });
     return toastController.present();
+  }
+
+  public redirecionarTelaSigin() {
+    return this.router.navigate(["/signin"]);
   }
 
 }
