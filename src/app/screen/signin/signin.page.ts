@@ -86,30 +86,17 @@ export class SigninPage implements OnInit {
     }
   }
 
-  public getData(data: any) {
-    this.dataNascimentoOriginal = data;
-    this.formGroup.patchValue({
-      dataNascimento: moment(data).format("DD/MM/YYYY")
-    });
-  }
-
   private configurarFormulario() {
     this.formGroup = this.formBuilder.group({
-      nome: ["", [Validators.required]],
       identificador: ["", [Validators.required]],
-      dataNascimento: ["", [Validators.required]],
-      telefone: ["", [Validators.required]],
       senha: ["", [Validators.required]],
     });
   }
 
   public signin() {
     console.log('Dados do formulário: ', this.formGroup.value);
-    this.signupService.signup(
-      this.formGroup.value.nome,
+    this.signupService.signin(
       this.formGroup.value.identificador,
-      this.dataNascimentoOriginal,
-      this.formGroup.value.telefone,
       this.formGroup.value.senha).subscribe({
         next: () => {
           console.log("Sucesso!");
@@ -139,7 +126,7 @@ export class SigninPage implements OnInit {
 
   public async toastError() {
     const toastController = await this.toastController.create({
-      message: "Erro ao tentar cadastrar os dados!",
+      message: "Erro ao tentar realizar Log In!",
       color: "danger",
       position: "top",
       duration: 3000

@@ -41,7 +41,7 @@
     </div>
 
     <div class="formulario-input">
-      <ion-button type="submit" expand="block" fill="solid" [disabled]="this.formGroup.valid">
+      <ion-button type="submit" expand="block" fill="solid" [disabled]="!this.formGroup.valid">
         Log In
       </ion-button>
     </div>
@@ -57,20 +57,15 @@
   </form>
 
   <div class="login-alternativo">
-    <ion-button (click)="realizarSigninGoogle()" fill="outline" color="light" expand="block" class="google">
+    <ion-button (click)="realizarSigninGoogle()" color="light" expand="block" class="google">
       <ion-icon name="logo-google"></ion-icon>
       <ion-text>Continue with Google</ion-text>
     </ion-button>
-    <ion-button (click)="realizarSigninFacebook()" fill="outline" color="light" expand="block" class="facebook">
+    <ion-button (click)="realizarSigninFacebook()" color="light" expand="block" class="facebook">
       <ion-icon name="logo-facebook"></ion-icon>
       <ion-text>Continue with Google</ion-text>
     </ion-button>
   </div>
-
-  <ion-modal trigger="abrir-modal" class="modal-datapicker">
-    <ion-datetime *ngIf="true" doneText="Selecionar" cancelText="Cancelar" presentation="date" size="cover"
-      [showDefaultButtons]="true" (ionChange)="getData($event.detail.value!)"></ion-datetime>
-  </ion-modal>
 
 </ion-content>
 
