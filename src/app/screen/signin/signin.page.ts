@@ -155,4 +155,8 @@ export class SigninPage implements OnInit {
     return this.router.navigate(["/signup"]);
   }
 
+  public realizarSigninGoogle() { }
+
+  public realizarSigninFacebook() { }
+
 }

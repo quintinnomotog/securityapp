@@ -58,15 +58,18 @@ ion-content {
             align-items: center;
             font-size: 0.8rem;
             font-weight: bold;
+
             .remember {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
                 color: #7c8287;
+
                 ion-text {
-                    margin-left: 0.7rem;                    
+                    margin-left: 0.7rem;
                 }
             }
+
             .forgot {
                 color: #4d81e7;
                 cursor: pointer;
@@ -115,16 +118,18 @@ ion-content {
         }
 
         .or {
-             display: flex;
+            display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 1rem;
             color: rgb(151, 149, 149);
+
             div {
                 border: #d9d9d9 solid 1px;
                 border-radius: 20px;
                 width: 90%;
             }
+
             ion-text {
                 margin: 0rem 1rem 0rem 1rem;
             }
@@ -132,22 +137,20 @@ ion-content {
     }
 
     .login-alternativo {
-        // border: red solid 2px;
-        ion-button {
+        .google, .facebook {
+            // border: dashed red 2px;
             width: 90%;
             margin: auto;
+            margin-bottom: 0.6rem;
+            background: white;
+            ion-icon {
+                padding-right: 0.4rem;
+                color: blue;
+            }
             ion-text {
-                margin-left: 0.4rem;
-                color: #312f2f;
-                font-size: 0.8rem;
+                color: black;
                 font-weight: bold;
             }
-        }
-        .facebook {
-            margin-top: 0.7rem;
-            --border-color: white;
-            background: white;
-            --border-radius: 14px;
         }
     }
 
